@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.log
+
+.netlify/
+node_modules/
+.build/
+delivery/
+.env*
+!.env.example
