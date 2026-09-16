@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';import {emptyBrief,applyEvidence,markdown} from '../public/core.mjs';
+const b=emptyBrief(),t=[{id:'1',role:'user',text:'Quero um site.'},{id:'2',role:'user',text:'Corrigindo: só embalagem, sem site.'},{id:'3',role:'agent',text:'Orçamento de 5000.'}];
+assert.equal(applyEvidence(b,t,{field:'deliverables',value:'Site',quote:'Quero um site.'}).ok,true);
+assert.equal(applyEvidence(b,t,{field:'deliverables',value:'Embalagem. Sem site.',quote:'Corrigindo: só embalagem, sem site.'}).ok,true);
+assert.equal(b.deliverables.history[0].value,'Site');assert.equal(b.deliverables.sourceId,'2');assert.equal(b.deliverables.reviewed,false);
+assert.equal(applyEvidence(b,t,{field:'budget',value:'5000',quote:'Orçamento de 5000.'}).ok,false);
+assert.equal(applyEvidence(b,t,{field:'timing',value:'Amanhã',quote:'Entregar amanhã'}).ok,false);
+assert.equal(applyEvidence(b,t,{field:'__proto__',value:'x',quote:'Quero um site.'}).ok,false);
+assert.equal(b.budget.value,'');assert.equal(b.timing.value,'');assert.ok(markdown(b,t,'teste').includes('Não informado'));console.log('PASS: correction history, exact user evidence, missing facts, unknown fields, export.');
+const {applyUpdates}=await import('../public/core.mjs');
+const batchBrief=emptyBrief();
+const batchResult=applyUpdates(batchBrief,[{id:'batch',role:'user',text:'Café para adultos em verde escuro.'}],{updates:[{field:'audience',value:'Adultos',quote:'adultos'},{field:'direction',value:'Verde escuro',quote:'verde escuro'}]});
+if(!batchResult.ok||!batchBrief.audience.value||!batchBrief.direction.value)throw Error('Batch failed');
+if(applyUpdates(batchBrief,[],{updates:[]}).ok)throw Error('Empty batch accepted');
+console.log('PASS: multi-field updates and empty batch rejection.');
