@@ -1,8 +1,8 @@
 # Briefkeeper
 
-A Portuguese voice interview for a creative brief you can review.
+A multilingual voice interview for a creative brief you can review.
 
-[Open the demo](https://briefkeeper-athos.netlify.app) · [lablab team](https://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon/briefkeeper)
+[Open the demo](https://briefkeeper-voice.netlify.app) · [lablab team](https://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon/briefkeeper)
 
 Briefkeeper organizes objective, audience, deliverables, visual direction, timing, constraints and budget. Accepted AI updates contain a quote from the client transcript. Designers can inspect the source, correct fields, mark them reviewed and export Markdown or JSON with change history. Unknown details remain questions.
 
@@ -49,3 +49,7 @@ Built by Athos Figueiredo for the AssemblyAI Voice Agent Hackathon. Next: a smal
 - https://www.assemblyai.com/docs/voice-agents/voice-agent-api/events-reference
 
 Original project code: MIT license. External services remain subject to their own terms.
+
+## R04 review update
+
+Six interface and conversation language options with matched narrators and adjustable playback volume. New client speech resets review approvals; prior field values are visible in change history. Empty or malformed tool updates cannot erase a field. Automated tests cover review invalidation, exact source quotes, language selection and volume bounds. Multilingual recognition and subjective audio quality still require real microphone testing in each language.
