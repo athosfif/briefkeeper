@@ -2,7 +2,7 @@
 
 A multilingual voice interview for a creative brief you can review.
 
-[Open the demo](https://briefkeeper-voice.netlify.app) · [lablab team](https://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon/briefkeeper)
+[Open the demo](https://briefkeeper-athos.netlify.app) · [lablab team](https://lablab.ai/ai-hackathons/assemblyai-voice-agent-hackathon/briefkeeper)
 
 Briefkeeper organizes objective, audience, deliverables, visual direction, timing, constraints and budget. Accepted AI updates contain a quote from the client transcript. Designers can inspect the source, correct fields, mark them reviewed and export Markdown or JSON with change history. Unknown details remain questions.
 
