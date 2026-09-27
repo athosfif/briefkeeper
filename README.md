@@ -53,3 +53,22 @@ Original project code: MIT license. External services remain subject to their ow
 ## R04 review update
 
 Six interface and conversation language options with matched narrators and adjustable playback volume. New client speech resets review approvals; prior field values are visible in change history. Empty or malformed tool updates cannot erase a field. Automated tests cover review invalidation, exact source quotes, language selection and volume bounds. Multilingual recognition and subjective audio quality still require real microphone testing in each language.
+
+
+## September 26 R05 revision
+
+The built-in fictional coffee-brand walkthrough now follows the selected English or Portuguese interface. Switching examples preserves the correction from a website to packaging, while timing, budget and constraints remain unanswered. No API call is made by the sample.
+
+This revision fixes a feedback loop between the language and volume-label DOM observers. Previously, repeated writes of unchanged labels could make the interface unresponsive. Exact source quotes, history and review invalidation remain part of the workflow.
+
+Run the local regression checks:
+
+```sh
+node --test tests/core.test.mjs tests/review-r04.test.mjs tests/language.test.mjs tests/volume.test.mjs tests/sample-r05.test.mjs
+```
+
+The September 26 browser review covered the English sample, original-source navigation, preserved correction history, blank unknown fields, reviewed JSON export, manual-edit review invalidation, six interface languages and narrow screens. This does not certify physical microphone quality or current AssemblyAI account balance. Live voice still requires provider access and the private reviewer code.
+
+A separate free, guided edition is available at https://figueirart.com/contribuicoes/briefkeeper/?lang=en. It supports typed answers and on-device transcription after downloading a model, without a paid API key. It is not the same conversational AssemblyAI agent and does not record complete meetings.
+
+Updated English presentation and narrated video are in `docs/delivery-r05/`. The short archived AssemblyAI excerpt is labeled as an earlier session with synthetic Portuguese test speech; it is separate from the fictional walkthrough. Creative direction and development by Athos Figueiredo, with AI assistance.

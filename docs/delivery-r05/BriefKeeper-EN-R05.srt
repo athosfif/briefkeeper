@@ -1,0 +1,153 @@
+1
+00:00:00,000 --> 00:00:01,580
+I'm Athos from Figueira.
+
+2
+00:00:02,280 --> 00:00:05,310
+In creative work, a project rarely starts with a
+perfect
+
+3
+00:00:05,320 --> 00:00:05,820
+brief.
+
+4
+00:00:06,440 --> 00:00:07,560
+It starts with a conversation.
+
+5
+00:00:08,240 --> 00:00:11,450
+Deliverables change, a detail gets missed, and the
+team moves
+
+6
+00:00:11,460 --> 00:00:13,000
+ahead with different expectations.
+
+7
+00:00:13,520 --> 00:00:16,370
+I built BriefKeeper to make that first conversation
+easier
+
+8
+00:00:16,380 --> 00:00:17,160
+to review.
+
+9
+00:00:17,860 --> 00:00:21,500
+In the competition version, AssemblyAI powers the
+voice interview.
+
+10
+00:00:21,880 --> 00:00:24,710
+What the client says becomes an editable brief, with
+the
+
+11
+00:00:24,720 --> 00:00:26,860
+original words beside each decision.
+
+12
+00:00:27,246 --> 00:00:29,646
+This walkthrough uses a fictional coffee brand.
+
+13
+00:00:30,126 --> 00:00:32,336
+The client first asks for a visual identity and a
+
+14
+00:00:32,346 --> 00:00:32,706
+website.
+
+15
+00:00:33,326 --> 00:00:34,506
+Then they correct the request.
+
+16
+00:00:35,086 --> 00:00:37,266
+No website, just identity and packaging.
+
+17
+00:00:38,526 --> 00:00:40,036
+BriefKeeper updates the deliverables
+
+18
+00:00:40,046 --> 00:00:42,086
+and keeps the previous version in the history.
+
+19
+00:00:42,666 --> 00:00:45,046
+You can open the source statement, check what
+changed,
+
+20
+00:00:45,366 --> 00:00:46,766
+and review the result yourself.
+
+21
+00:00:47,526 --> 00:00:50,116
+The deadline and budget were never agreed, so they
+stay
+
+22
+00:00:50,126 --> 00:00:50,566
+open.
+
+23
+00:00:51,086 --> 00:00:53,796
+When you're ready, export the brief and its history
+
+24
+00:00:53,806 --> 00:00:55,726
+for the next conversation with your team.
+
+25
+00:00:56,111 --> 00:00:59,501
+The original live recording shows an AssemblyAI
+session with
+
+26
+00:00:59,511 --> 00:01:00,931
+synthetic test speech.
+
+27
+00:01:01,371 --> 00:01:03,271
+It is separate from this guided example.
+
+28
+00:01:03,891 --> 00:01:06,391
+There's also a free sample on the Figueira website.
+
+29
+00:01:06,931 --> 00:01:10,141
+That version can transcribe short recordings locally
+after
+
+30
+00:01:10,151 --> 00:01:11,611
+downloading a speech model.
+
+31
+00:01:12,211 --> 00:01:14,251
+It doesn't need a paid API key.
+
+32
+00:01:14,831 --> 00:01:16,351
+Two versions, one purpose.
+
+33
+00:01:16,731 --> 00:01:19,501
+Turn a conversation into a brief you can question,
+correct
+
+34
+00:01:19,511 --> 00:01:20,311
+and use.
+
+35
+00:01:20,711 --> 00:01:21,471
+Briefkeeper.
+
+36
+00:01:22,011 --> 00:01:23,911
+From conversation to clarity.

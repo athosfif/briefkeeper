@@ -1,0 +1,6 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import{detectLanguage,normalizeLanguage,speechSettings,LANGUAGES}from'../public/language-core.mjs';
+test('manual preference outranks browser and country',()=>assert.equal(detectLanguage({saved:'es',browser:['pt-BR'],country:'DE'}),'es'));
+test('browser preference then supported country then English fallback',()=>{assert.equal(detectLanguage({browser:['pt-BR'],country:'US'}),'pt');assert.equal(detectLanguage({browser:['ja'],country:'BR'}),'pt');assert.equal(detectLanguage({browser:['xx'],country:'XX'}),'en')});
+test('unknown language and voice cannot reach provider',()=>{assert.equal(normalizeLanguage('invalid'),null);assert.equal(speechSettings({conversation:'bad',voice:'bad'},'es').voice,'lola')});
+test('native narrator always follows conversation language',()=>{for(const language of Object.keys(LANGUAGES)){const s=speechSettings({conversation:language,voice:'alba'});assert.equal(s.language,language);assert.equal(s.voice,LANGUAGES[language].voice)}});
+test('page and spoken language may be independent',()=>{assert.equal(speechSettings({conversation:'fr'},'pt').voice,'estelle');assert.equal(speechSettings({conversation:'auto'},'de').voice,'juergen');assert.equal(speechSettings({conversation:'en',voice:'anna'},'pt').voice,'anna')});

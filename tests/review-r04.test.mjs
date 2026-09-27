@@ -1,0 +1,5 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {emptyBrief,applyEvidence,invalidateReview,reviewSummary} from '../public/core.mjs';
+test('JSON tool arguments are accepted but malformed and empty values never erase a field',()=>{const b=emptyBrief(),t=[{id:'1',role:'user',text:'Quero uma embalagem.'}];assert.equal(applyEvidence(b,t,JSON.stringify({field:'deliverables',value:'Embalagem',quote:'Quero uma embalagem.'})).ok,true);assert.equal(applyEvidence(b,t,'{broken').ok,false);assert.equal(applyEvidence(b,t,{field:'deliverables',value:' ',quote:'Quero uma embalagem.'}).ok,false);assert.equal(b.deliverables.value,'Embalagem')});
+test('new speech invalidates approval while preserving source and history',()=>{const b=emptyBrief();b.deliverables={value:'Site',quote:'Quero site',sourceId:'t1',reviewed:true,history:[]};invalidateReview(b);assert.equal(b.deliverables.reviewed,false);assert.equal(b.deliverables.sourceId,'t1');assert.deepEqual(reviewSummary(b),{filled:1,reviewed:0})});

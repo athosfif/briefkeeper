@@ -8,3 +8,6 @@ node_modules/
 delivery/
 .env*
 !.env.example
+
+._*
+.DS_Store

@@ -1,0 +1,3 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {clampVolume,createVoiceOutput,setVoiceVolume} from '../public/voice-output.mjs';
+test('volume is bounded and defaults below full amplitude',()=>{assert.equal(clampVolume(NaN),.45);assert.equal(clampVolume(2),1);assert.equal(clampVolume(-1),0)});
+test('live volume ramps and disposed output is not reused',()=>{let changes=[];const ctx={currentTime:2,destination:{},createGain:()=>({gain:{value:0,cancelScheduledValues(){},setTargetAtTime(...args){changes.push(args)}},connect(){},disconnect(){}})};const out=createVoiceOutput(ctx);assert.equal(out.node.gain.value,.45);setVoiceVolume(.25);assert.deepEqual(changes,[[.25,2,.025]]);out.dispose();setVoiceVolume(.45);assert.equal(changes.length,1)});

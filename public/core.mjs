@@ -1,10 +1,12 @@
 export const FIELDS={objective:'Objetivo',audience:'Público',deliverables:'Entregas',direction:'Direção visual',timing:'Prazo',constraints:'Restrições',budget:'Orçamento'};
 export function emptyBrief(){return Object.fromEntries(Object.keys(FIELDS).map(k=>[k,{value:'',quote:'',sourceId:null,reviewed:false,history:[]}]))}
 export function applyEvidence(brief,turns,args){
+ if(typeof args==='string'){try{args=JSON.parse(args)}catch{return {ok:false,error:'Invalid JSON arguments'}}}
  if(!args||!Object.hasOwn(FIELDS,args.field)||typeof args.value!=='string'||typeof args.quote!=='string')return {ok:false,error:'Invalid field or arguments'};
  const quote=args.quote.trim();
  const source=[...turns].reverse().find(t=>t.role==='user'&&quote.length>=4&&t.text.includes(quote));
  if(!source)return {ok:false,error:'The quote must exactly match a user transcript. Ask for clarification; never invent evidence.'};
+ if(!args.value.trim())return {ok:false,error:'A field value cannot be blank'};
  if(args.value.length>1200||quote.length>1800)return {ok:false,error:'Field too long'};
  const old=brief[args.field];if(old.value===args.value&&old.quote===quote)return {ok:true,unchanged:true};
  brief[args.field]={value:args.value.trim(),quote,sourceId:source.id,reviewed:false,history:[...old.history,...(old.value?[{value:old.value,quote:old.quote,sourceId:old.sourceId}]:[])]};
@@ -17,3 +19,7 @@ export function applyUpdates(brief,turns,args){
  const results=args.updates.map(update=>applyEvidence(brief,turns,update));
  return {ok:results.every(r=>r.ok),results,needsHumanReview:true};
 }
+
+// New speech can contradict an earlier agreement. Require review again.
+export function invalidateReview(brief){for(const field of Object.values(brief))field.reviewed=false}
+export function reviewSummary(brief){const fields=Object.values(brief);return {filled:fields.filter(f=>f.value).length,reviewed:fields.filter(f=>f.value&&f.reviewed).length}}
